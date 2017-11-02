@@ -1,35 +1,36 @@
 'use strict';
 //array to store the objects
-merch.allmerchs = [];
-//make an object
-function merch(name, filepath){
+Merch.allmerch = [];
+
+//constructor that makes objects
+function Merch(name, filepath){
   this.name = name;
   this.filepath = filepath;
   this.timesSeen = 0;
   this.timesChoosen = 0;
-  merch.allmerchs.push(this);
+  Merch.allmerch.push(this);
 
 }
 //makes new product instances
-new merch('bag', 'img/bag.jpg');
-new merch('banana', 'img/banana.jpg');
-new merch('bathroom', 'img/bathroom.jpg');
-new merch('boots', 'img/boots.jpg');
-new merch('breakfast', 'img/breakfast.jpg');
-new merch('bubblegum', 'img/bubblegum.jpg');
-new merch('chair', 'img/chair.jpg');
-new merch('cthulhu', 'img/cthulhu.jpg');
-new merch('dog-duck', 'img/dog-duck.jpg');
-new merch('dragon', 'img/dragon.jpg');
-new merch('pen', 'img/pen.jpg');
-new merch('pet-sweep', 'img/pet-sweep.jpg');
-new merch('scissors', 'img/scissors.jpg');
-new merch('shark', 'img/shark.jpg');
-new merch('sweep', 'img/sweep.png');
-new merch('unicorn', 'img/unicorn.jpg');
-new merch('usb', 'img/usb.gif');
-new merch('water-can', 'img/water-can.jpg');
-new merch('wine-glass', 'img/wine-glass.jpg');
+new Merch('Bag', 'img/bag.jpg');
+new Merch('Banana', 'img/banana.jpg');
+new Merch('Bathroom', 'img/bathroom.jpg');
+new Merch('Boots', 'img/boots.jpg');
+new Merch('Breakfast', 'img/breakfast.jpg');
+new Merch('Bubblegum', 'img/bubblegum.jpg');
+new Merch('Chair', 'img/chair.jpg');
+new Merch('Cthulhu', 'img/cthulhu.jpg');
+new Merch('Dog-duck', 'img/dog-duck.jpg');
+new Merch('Dragon', 'img/dragon.jpg');
+new Merch('Pen', 'img/pen.jpg');
+new Merch('Pet-sweep', 'img/pet-sweep.jpg');
+new Merch('Scissors', 'img/scissors.jpg');
+new Merch('Shark', 'img/shark.jpg');
+new Merch('Sweep', 'img/sweep.png');
+new Merch('Unicorn', 'img/unicorn.jpg');
+new Merch('Usb', 'img/usb.gif');
+new Merch('Water-can', 'img/water-can.jpg');
+new Merch('Wine-glass', 'img/wine-glass.jpg');
 
 //listener, something to be clicked...events!
 var event1 = document.getElementById('allImages');
@@ -41,7 +42,7 @@ event1.addEventListener('click', all3Images);
 
 //randomly display 1 of the product images
 function randommerch() {
-  return Math.floor(Math.random() * merch.allmerchs.length);
+  return Math.floor(Math.random() * Merch.allmerch.length);
 }
 randommerch();
 console.log(randommerch);
@@ -51,13 +52,13 @@ function all3Images(e) {
   // console.log(e.target);
   var allimages = randommerch();
   var allEl = document.getElementById('allImages');
-  allEl.src = merch.allmerchs[allimages].filepath;
-  merch.allmerchs[allimages].timesSeen++;
+  allEl.src = Merch.allmerch[allimages].filepath;
+  Merch.allmerch[allimages].timesSeen++;
 }
 all3Images();
 // notes for tonight on what I need to do: create a function that will generate first and second pictures without duplicating the same image twice(some sort of validation)
 function generateImages() {
-  var img1 = merch.allmerchs;
+  var img1 = Merch.allmerch;
   console.log(img1);
 }
 generateImages();
