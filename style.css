@@ -1,7 +1,25 @@
+* {
+  background-color: #bfd2e0;
+}
+
+#instructions {
+
+  display: inline;
+
+}
+
+#allimages {
+position: relative;
+
+}
+
 img {
   border: 2px solid red;
   height: 250px;
   width: 250px;
   display: inline;
+}
+
+#list {
 
 }

@@ -1,84 +1,125 @@
 'use strict';
 //array to store the objects
-merch.allmerchs = [];
-//make an object
-function merch(name, filepath){
+var allMerch = [];
+var randomIndex1;
+var randomIndex2;
+var randomIndex3;
+var previousIndex1;
+var previousIndex2;
+var previousIndex3;
+var pageTotalClicks = 0;
+
+//constructor that makes objects
+function Merch(name, filepath) {
   this.name = name;
   this.filepath = filepath;
   this.timesSeen = 0;
-  this.timesChoosen = 0;
-  merch.allmerchs.push(this);
-
+  this.timesPicked = 0;
+  allMerch.push(this);
 }
 //makes new product instances
-new merch('bag', 'img/bag.jpg');
-new merch('banana', 'img/banana.jpg');
-new merch('bathroom', 'img/bathroom.jpg');
-new merch('boots', 'img/boots.jpg');
-new merch('breakfast', 'img/breakfast.jpg');
-new merch('bubblegum', 'img/bubblegum.jpg');
-new merch('chair', 'img/chair.jpg');
-new merch('cthulhu', 'img/cthulhu.jpg');
-new merch('dog-duck', 'img/dog-duck.jpg');
-new merch('dragon', 'img/dragon.jpg');
-new merch('pen', 'img/pen.jpg');
-new merch('pet-sweep', 'img/pet-sweep.jpg');
-new merch('scissors', 'img/scissors.jpg');
-new merch('shark', 'img/shark.jpg');
-new merch('sweep', 'img/sweep.png');
-new merch('unicorn', 'img/unicorn.jpg');
-new merch('usb', 'img/usb.gif');
-new merch('water-can', 'img/water-can.jpg');
-new merch('wine-glass', 'img/wine-glass.jpg');
+new Merch('Bag', 'img/bag.jpg');
+new Merch('Banana', 'img/banana.jpg');
+new Merch('Bathroom', 'img/bathroom.jpg');
+new Merch('Boots', 'img/boots.jpg');
+new Merch('Breakfast', 'img/breakfast.jpg');
+new Merch('Bubblegum', 'img/bubblegum.jpg');
+new Merch('Chair', 'img/chair.jpg');
+new Merch('Cthulhu', 'img/cthulhu.jpg');
+new Merch('Dog-duck', 'img/dog-duck.jpg');
+new Merch('Dragon', 'img/dragon.jpg');
+new Merch('Pen', 'img/pen.jpg');
+new Merch('Pet-sweep', 'img/pet-sweep.jpg');
+new Merch('Scissors', 'img/scissors.jpg');
+new Merch('Shark', 'img/shark.jpg');
+new Merch('Sweep', 'img/sweep.png');
+new Merch('Unicorn', 'img/unicorn.jpg');
+new Merch('Usb', 'img/usb.gif');
+new Merch('Water-can', 'img/water-can.jpg');
+new Merch('Wine-glass', 'img/wine-glass.jpg');
 
 //listener, something to be clicked...events!
-var event1 = document.getElementById('allImages');
-event1.addEventListener('click', all3Images);
-// var event2 = document.getElementById('allImages');
-// event2.addEventListener('click', image2Pic);
-// var event3 = document.getElementById('allImages');
-// event3.addEventListener('click', image3Pic);
+var event1 = document.getElementById('image1');
+event1.addEventListener('click', totalClicks1);
+event1.addEventListener('click', renderImages);
+var event2 = document.getElementById('image2');
+event2.addEventListener('click', totalClicks2);
+event2.addEventListener('click', renderImages);
+var event3 = document.getElementById('image3');
+event3.addEventListener('click', totalClicks3);
+event3.addEventListener('click', renderImages);
 
-//randomly display 1 of the product images
-function randommerch() {
-  return Math.floor(Math.random() * merch.allmerchs.length);
+function totalClicks1() {
+  allMerch[randomIndex1].totalClicks++;
+  pageTotalClicks++;
+  makeList();
 }
-randommerch();
-console.log(randommerch);
+function totalClicks2() {
+  allMerch[randomIndex2].totalClicks++;
+  pageTotalClicks++;
+  makeList();
+}
+function totalClicks3() {
+  allMerch[randomIndex3].totalClicks++;
+  pageTotalClicks++;
+  makeList();
+}
+//randomly displays image1 and checks to make sure it is not duplicated
+function randomImage1() {
+  if (pageTotalClicks > 24){
+    event1.removeEventListener('click', totalClicks1);
+    event1.removeEventListener('click', renderImages);
+  }
+  randomIndex1 = Math.floor(Math.random() * allMerch.length);
+  while (randomIndex1 === previousIndex1 || randomIndex1 === previousIndex2 || randomIndex1 === previousIndex3) {
+    randomIndex1 = Math.floor(Math.random() * allMerch.length);
+  }
+  allMerch[randomIndex1].timesSeen += 1;
+  allMerch[randomIndex1].timesPicked += 1;
+  event1.src = allMerch[randomIndex1].filepath;
+}
+//randomly displays image2 and checks to make sure it is not duplicated
+function randomImage2() {
+  if (pageTotalClicks > 24){
+    event2.removeEventListener('click', totalClicks2);
+    event2.removeEventListener('click', renderImages);
+  }
+  randomIndex2 = Math.floor(Math.random() * allMerch.length);
+  while (randomIndex2 === randomIndex1 || randomIndex2 === previousIndex1 || randomIndex2 === previousIndex2 || randomIndex2 === previousIndex3) {
+    randomIndex2 = Math.floor(Math.random() * allMerch.length);}
+  allMerch[randomIndex2].timesSeen += 1;
+  event2.src = allMerch[randomIndex2].filepath;
+}
+//randomly displays image3 and checks to make sure it is not duplicated
+function randomImage3() {
+  if (pageTotalClicks > 24){
+    event3.removeEventListener('click', totalClicks3);
+    event3.removeEventListener('click', renderImages);
+  }
+  randomIndex3 = Math.floor(Math.random() * allMerch.length);
+  while (randomIndex3 === randomIndex1 || randomIndex3 === randomIndex2 || randomIndex3 === previousIndex1 || randomIndex3 === previousIndex2 || randomIndex3 === previousIndex3) {
+    randomIndex3 = Math.floor(Math.random() * allMerch.length);}
+  allMerch[randomIndex3].timesSeen += 1;
+  event3.src = allMerch[randomIndex3].filepath;
+}
+//execute random products
+function renderImages() {
+  randomImage1();
+  randomImage2();
+  randomImage3();
+  previousIndex1 = randomIndex1;
+  previousIndex2 = randomIndex2;
+  previousIndex3 = randomIndex3;
+}
+renderImages();
 
-function all3Images(e) {
-  // console.log('image 1 pic');
-  // console.log(e.target);
-  var allimages = randommerch();
-  var allEl = document.getElementById('allImages');
-  allEl.src = merch.allmerchs[allimages].filepath;
-  merch.allmerchs[allimages].timesSeen++;
+function makeList() {
+  if (pageTotalClicks === 25) {
+    var ulEl = document.getElementById('tallylist');
+    for (var i = 0; i < allMerch.length; i++) {
+      var liEl = document.createElement('li');
+      liEl.textContent = 'The ' + allMerch[i].name + ' item was picked ' + allMerch[i].timesPicked + ' times and shown ' + allMerch[i].timesSeen + ' times.';
+      ulEl.appendChild(liEl);
+    }
+  }
 }
-all3Images();
-// notes for tonight on what I need to do: create a function that will generate first and second pictures without duplicating the same image twice(some sort of validation)
-function generateImages() {
-  var img1 = merch.allmerchs;
-  console.log(img1);
-}
-generateImages();
-
-all3Images();
-// function image2Pic(e) {
-//   console.log('image 2 pic');
-//   var img2Pick = randommerch();
-//   var img2El = document.getElementById('image2');
-//   img2El.src = Product.allProducts[img2Pick].filepath;
-//   Product.allProducts[img2Pick].timesSeen++;
-// }
-//
-// function image3Pic(e) {
-//   console.log('image 3 pic');
-//   var img3Pick = randomProduct();
-//   var img3El = document.getElementById('image3');
-//   img3El.src = Product.allProducts[img3Pick].filepath;
-//   Product.allProducts[img3Pick].timesSeen++;
-// }
-// // randomProduct();
-// image1Pic();
-// image2Pic();
-// image3Pic();
