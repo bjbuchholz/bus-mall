@@ -76,6 +76,7 @@ function randomImage1() {
   }
   allMerch[randomIndex1].timesSeen += 1;
   allMerch[randomIndex1].timesPicked += 1;
+  console.log(allMerch[randomIndex1].timesPicked);
   event1.src = allMerch[randomIndex1].filepath;
 }
 //randomly displays image2 and checks to make sure it is not duplicated
@@ -115,11 +116,48 @@ renderImages();
 
 function makeList() {
   if (pageTotalClicks === 25) {
-    var ulEl = document.getElementById('tallylist');
     for (var i = 0; i < allMerch.length; i++) {
-      var liEl = document.createElement('li');
-      liEl.textContent = 'The ' + allMerch[i].name + ' item was picked ' + allMerch[i].timesPicked + ' times and shown ' + allMerch[i].timesSeen + ' times.';
-      ulEl.appendChild(liEl);
-    }
-  }
-}
+    //this holds the value for the votes of each product image
+      var data = [allMerch[i].timesPicked];}
+    console.log(data);
+    //this is the name for each product
+    var labelColors = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can',
+      'wine-glass'];
+    var ctx = document.getElementById('list').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labelColors,
+        datasets: [{
+          label: '# of Votes',
+          data: data,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(153, 102, 255, 0.5)',
+            'rgba(255, 159, 64, 0.5)',
+          ]
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }}
+
+//     var ulEl = document.getElementById('list');
+//     for (var i = 0; i < allMerch.length; i++) {
+//       var liEl = document.createElement('li');
+//       liEl.textContent = 'The ' + allMerch[i].name + ' item was picked ' + allMerch[i].timesPicked + ' times and shown ' + allMerch[i].timesSeen + ' times.';
+//       ulEl.appendChild(liEl);
+//     }
+//   }
+// }

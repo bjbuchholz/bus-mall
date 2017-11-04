@@ -1,25 +1,52 @@
 * {
-  background-color: #bfd2e0;
-  
+  background-color: #FCBB22;
+  box-sizing: border-box;
 }
-
-#instructions {
-
-  display: inline;
-
+h1 {
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Archivo Black', sans-serif;
+  margin-bottom: 0px;
 }
-
+h2 {
+  text-align: center;
+  font-family: helvetica;
+  font-size: 18px;
+  margin-top: 0px;
+}
+#instructions{
+  text-align: center;
+  font-family: sans-serif;
+  display: block;
+}
+#bus img {
+  border: 2px solid red ;
+  border-radius: 90px;
+  padding-left: auto;
+  padding-right: auto;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+p {
+  font-family: helvetica;
+  font-size: 18px;
+  text-align: center;
+  padding-left: auto;
+  padding-right: auto;
+}
+#allimages {
+  text-align: center;
+}
 #image1, #image2, #image3 {
 position: relative;
-border: 2px solid red;
+border: 2px dashed black;
 height: 250px;
 width: 250px;
+border-radius: 25px;
+margin-top: 10px;
 display: inline;
-padding-left: auto;
-padding-right: auto;
-
 }
 
 #list {
-
 }
