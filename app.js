@@ -8,6 +8,8 @@ var previousIndex1;
 var previousIndex2;
 var previousIndex3;
 var pageTotalClicks = 0;
+var timesPicked = [];
+console.log(allMerch);
 
 //constructor that makes objects
 function Merch(name, filepath) {
@@ -116,29 +118,47 @@ renderImages();
 
 function makeList() {
   if (pageTotalClicks === 25) {
-    for (var i = 0; i < allMerch.length; i++) {
     //this holds the value for the votes of each product image
-      var data = [allMerch[i].timesPicked];}
-    console.log(data);
+    var data = [];
+    for (var i = 0; i < allMerch.length; i++) {
+      data.push(allMerch[i].timesPicked);
+      console.log('data pushed', allMerch[i].timesPicked);
+      console.log('data array after for loop', data);
+    }
     //this is the name for each product
-    var labelColors = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can',
-      'wine-glass'];
+    var merchLabels = ['Bag', 'Banana', 'Bathroom', 'Boots', 'Breakfast', 'Bubblegum', 'Chair', 'Cthulhu', 'Dog-duck', 'Dragon', 'Pen', 'Pet-sweep', 'Scissors', 'Shark', 'Sweep', 'Tauntaun', 'Unicorn', 'Usb', 'Water-can',
+      'Wine-glass'];
     var ctx = document.getElementById('list').getContext('2d');
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: labelColors,
+        labels: merchLabels,
         datasets: [{
           label: '# of Votes',
           data: data,
           backgroundColor: [
-            'rgba(255, 99, 132, 0.5)',
-            'rgba(54, 162, 235, 0.5)',
-            'rgba(255, 206, 86, 0.5)',
-            'rgba(75, 192, 192, 0.5)',
-            'rgba(153, 102, 255, 0.5)',
-            'rgba(255, 159, 64, 0.5)',
-          ]
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(54, 162, 235, 0.8)',
+            'rgba(255, 206, 86, 0.8)',
+            'rgba(75, 192, 192, 0.8)',
+            'rgba(153, 102, 255, 0.8)',
+            'rgba(255, 159, 64, 0.8)',
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(54, 162, 235, 0.8)',
+            'rgba(255, 206, 86, 0.8)',
+            'rgba(75, 192, 192, 0.8)',
+            'rgba(153, 102, 255, 0.8)',
+            'rgba(255, 159, 64, 0.8)',
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(54, 162, 235, 0.8)',
+            'rgba(255, 206, 86, 0.8)',
+            'rgba(75, 192, 192, 0.8)',
+            'rgba(153, 102, 255, 0.8)',
+            'rgba(255, 159, 64, 0.8)',
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(54, 162, 235, 0.8)'
+          ],
+          borderWidth: 1
         }]
       },
       options: {
@@ -152,12 +172,3 @@ function makeList() {
       }
     });
   }}
-
-//     var ulEl = document.getElementById('list');
-//     for (var i = 0; i < allMerch.length; i++) {
-//       var liEl = document.createElement('li');
-//       liEl.textContent = 'The ' + allMerch[i].name + ' item was picked ' + allMerch[i].timesPicked + ' times and shown ' + allMerch[i].timesSeen + ' times.';
-//       ulEl.appendChild(liEl);
-//     }
-//   }
-// }
