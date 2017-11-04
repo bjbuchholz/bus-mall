@@ -35,6 +35,7 @@ new Merch('Pet-sweep', 'img/pet-sweep.jpg');
 new Merch('Scissors', 'img/scissors.jpg');
 new Merch('Shark', 'img/shark.jpg');
 new Merch('Sweep', 'img/sweep.png');
+new Merch('Tauntaun', 'img/tauntaun.jpg');
 new Merch('Unicorn', 'img/unicorn.jpg');
 new Merch('Usb', 'img/usb.gif');
 new Merch('Water-can', 'img/water-can.jpg');
@@ -125,9 +126,12 @@ function makeList() {
       console.log('data pushed', allMerch[i].timesPicked);
       console.log('data array after for loop', data);
     }
-    //this is the name for each product
-    var merchLabels = ['Bag', 'Banana', 'Bathroom', 'Boots', 'Breakfast', 'Bubblegum', 'Chair', 'Cthulhu', 'Dog-duck', 'Dragon', 'Pen', 'Pet-sweep', 'Scissors', 'Shark', 'Sweep', 'Tauntaun', 'Unicorn', 'Usb', 'Water-can',
-      'Wine-glass'];
+    //this inputs the name for each product into the bar chart
+    var merchLabels = [];
+    for (var i = 0; i < allMerch.length; i++) {
+      merchLabels.push(allMerch[i].name);
+    }
+    console.log(merchLabels);
     var ctx = document.getElementById('list').getContext('2d');
     var myChart = new Chart(ctx, {
       type: 'bar',
@@ -143,20 +147,20 @@ function makeList() {
             'rgba(75, 192, 192, 0.8)',
             'rgba(153, 102, 255, 0.8)',
             'rgba(255, 159, 64, 0.8)',
-            'rgba(255, 99, 132, 0.8)',
-            'rgba(54, 162, 235, 0.8)',
-            'rgba(255, 206, 86, 0.8)',
-            'rgba(75, 192, 192, 0.8)',
-            'rgba(153, 102, 255, 0.8)',
-            'rgba(255, 159, 64, 0.8)',
-            'rgba(255, 99, 132, 0.8)',
-            'rgba(54, 162, 235, 0.8)',
-            'rgba(255, 206, 86, 0.8)',
-            'rgba(75, 192, 192, 0.8)',
-            'rgba(153, 102, 255, 0.8)',
-            'rgba(255, 159, 64, 0.8)',
-            'rgba(255, 99, 132, 0.8)',
-            'rgba(54, 162, 235, 0.8)'
+            'rgba(275, 99, 132, 0.8)',
+            'rgba(74, 162, 235, 0.8)',
+            'rgba(275, 206, 86, 0.8)',
+            'rgba(95, 192, 192, 0.8)',
+            'rgba(173, 102, 255, 0.8)',
+            'rgba(275, 159, 64, 0.8)',
+            'rgba(235, 99, 132, 0.8)',
+            'rgba(24, 162, 235, 0.8)',
+            'rgba(235, 206, 86, 0.8)',
+            'rgba(55, 192, 192, 0.8)',
+            'rgba(133, 102, 255, 0.8)',
+            'rgba(235, 159, 64, 0.8)',
+            'rgba(205, 99, 132, 0.8)',
+            'rgba(154, 162, 235, 0.8)',
           ],
           borderWidth: 1
         }]
