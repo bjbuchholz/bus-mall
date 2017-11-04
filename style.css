@@ -1,5 +1,6 @@
 * {
   background-color: #bfd2e0;
+  
 }
 
 #instructions {
@@ -8,16 +9,15 @@
 
 }
 
-#allimages {
+#image1, #image2, #image3 {
 position: relative;
+border: 2px solid red;
+height: 250px;
+width: 250px;
+display: inline;
+padding-left: auto;
+padding-right: auto;
 
-}
-
-img {
-  border: 2px solid red;
-  height: 250px;
-  width: 250px;
-  display: inline;
 }
 
 #list {
